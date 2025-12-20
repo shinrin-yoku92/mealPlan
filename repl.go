@@ -7,10 +7,6 @@ import (
 	"strings"
 )
 
-type config struct {
-	storedMeals map[string]string
-}
-
 type command struct {
 	name        string
 	description string
@@ -22,6 +18,24 @@ func startRepl(cfg *config) {
 	for {
 		fmt.Print("meal-tracker > ")
 		reader.Scan()
+
+		input := cleanInput(reader.Text())
+		if len(input) == 0 {
+			continue
+		}
+
+		commands := getCommands()
+		cmd, exists := commands[input[0]]
+		if exists {
+			err := cmd.execute(cfg, input[1:]...)
+			if err != nil {
+				fmt.Println("Error executing command:", err)
+			}
+		} else {
+			fmt.Println("Unknown command. Type 'help' for a list of commands.")
+			continue
+		}
+
 	}
 }
 
@@ -59,7 +73,7 @@ func getCommands() map[string]command {
 		"exit": {
 			name:        "exit",
 			description: "Exit the meal tracker",
-			execute:     exitRepl,
+			execute:     commandExit,
 		},
 	}
 }
