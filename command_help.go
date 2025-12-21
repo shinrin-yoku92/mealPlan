@@ -6,7 +6,6 @@ import (
 
 func showHelp(cfg *config, args ...string) error {
 	fmt.Println()
-	fmt.Println("Welcome to mealPlan!")
 	fmt.Println("Available commands:")
 	fmt.Println()
 	for _, cmd := range getCommands() {

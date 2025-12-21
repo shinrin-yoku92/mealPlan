@@ -15,8 +15,11 @@ type command struct {
 
 func startRepl(cfg *config) {
 	reader := bufio.NewScanner(os.Stdin)
+	fmt.Println()
+	fmt.Println("Welcome to mealPlan!")
+	fmt.Println("Use 'help' for a list of commands")
 	for {
-		fmt.Print("meal-tracker > ")
+		fmt.Print("mealPlan > ")
 		reader.Scan()
 
 		input := cleanInput(reader.Text())
@@ -47,7 +50,7 @@ func getCommands() map[string]command {
 	return map[string]command{
 		"add": {
 			name:        "add",
-			description: "Add a meal with its description",
+			description: "Add a meal",
 			execute:     addMeal,
 		},
 		"view": {
@@ -72,7 +75,7 @@ func getCommands() map[string]command {
 		},
 		"exit": {
 			name:        "exit",
-			description: "Exit the meal tracker",
+			description: "Exit mealPlan",
 			execute:     commandExit,
 		},
 	}

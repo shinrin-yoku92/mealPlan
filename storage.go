@@ -6,7 +6,7 @@ import (
 )
 
 type config struct {
-	storedMeals map[string]string
+	storedMeals []string
 }
 
 func (cfg *config) Load(path string) error {
