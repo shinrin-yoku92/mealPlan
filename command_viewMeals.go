@@ -1,6 +1,14 @@
 package main
 
+import (
+	"fmt"
+)
+
 func viewMeals(cfg *config, args ...string) error {
-	//TODO: implement viewMeals command
+	for _, meal := range cfg.storedMeals {
+		fmt.Println(meal)
+	}
+	fmt.Println()
+	
 	return nil
 }
