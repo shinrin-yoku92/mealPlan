@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 )
 
@@ -12,8 +13,13 @@ func addMeal(cfg *config, args ...string) error {
 
 	mealName := strings.Join(args, " ")
 
+	if slices.Contains(cfg.storedMeals, mealName) {
+		fmt.Printf("'%s' already exists.\n", mealName)
+		return nil
+	}
+
 	cfg.storedMeals = append(cfg.storedMeals, mealName)
-	fmt.Printf("Meal '%s' added successfully.\n", mealName)
+	fmt.Printf("'%s' added successfully.\n", mealName)
 
 	return cfg.Save(dataFile)
 }
