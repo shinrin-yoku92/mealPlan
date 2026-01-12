@@ -5,8 +5,13 @@ import (
 	"os"
 )
 
+type Meal struct {
+	Name        string `json:"name"`
+	Description string `json:"description,omitempty"`
+}
+
 type config struct {
-	storedMeals []string
+	storedMeals []Meal
 }
 
 func (cfg *config) Load(path string) error {

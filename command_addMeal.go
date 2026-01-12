@@ -1,8 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"slices"
+	"os"
 	"strings"
 )
 
@@ -13,12 +14,26 @@ func addMeal(cfg *config, args ...string) error {
 
 	mealName := strings.Join(args, " ")
 
-	if slices.Contains(cfg.storedMeals, mealName) {
-		fmt.Printf("'%s' already exists.\n", mealName)
-		return nil
+	for _, meals := range cfg.storedMeals {
+		if meals.Name == mealName {
+			fmt.Printf("'%s' already exists.\n", mealName)
+			return nil
+		}
 	}
 
-	cfg.storedMeals = append(cfg.storedMeals, mealName)
+	reader := bufio.NewScanner(os.Stdin)
+	fmt.Printf("Enter a description for '%s': ", mealName)
+	reader.Scan()
+	description := strings.TrimSpace(reader.Text())
+
+	newMeal := Meal{
+		Name: mealName,
+	}
+	if description != "" {
+		newMeal.Description = description
+	}
+
+	cfg.storedMeals = append(cfg.storedMeals, newMeal)
 	fmt.Printf("'%s' added successfully.\n", mealName)
 
 	return cfg.Save(dataFile)

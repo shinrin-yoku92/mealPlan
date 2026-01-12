@@ -5,15 +5,19 @@ import (
 )
 
 func viewMeals(cfg *config, args ...string) error {
-	for _, meal := range cfg.storedMeals {
-		fmt.Println(meal)
-	}
-	fmt.Println()
-
 	if len(cfg.storedMeals) == 0 {
 		fmt.Println("No meals stored.")
 		return nil
 	}
+
+	for _, meal := range cfg.storedMeals {
+		if meal.Description == "" {
+			fmt.Printf("%s\n", meal.Name)
+		} else {
+			fmt.Printf("%s - %s\n", meal.Name, meal.Description)
+		}
+	}
+	fmt.Println()
 
 	return nil
 }

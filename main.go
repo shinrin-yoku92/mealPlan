@@ -19,7 +19,7 @@ func init() {
 
 func main() {
 	cfg := &config{
-		storedMeals: []string{},
+		storedMeals: []Meal{},
 	}
 
 	if err := cfg.Load(dataFile); err != nil {
