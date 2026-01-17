@@ -32,6 +32,9 @@ func startRepl(cfg *config) {
 		if exists {
 			err := cmd.execute(cfg, input[1:]...)
 			if err != nil {
+				if err.Error() == "exit" {
+					break
+				}
 				fmt.Println("Error executing command:", err)
 			}
 		} else {
