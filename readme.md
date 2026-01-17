@@ -55,10 +55,10 @@ Below are common commands you can use in the CLI:
 
 | Command             | Description                           |
 | ------------------- | ------------------------------------- |
-| `addMeal <name>`    | Adds a meal to your list              |
-| `removeMeal <name>` | Removes a meal by name                |
-| `viewMeals`         | Lists all current meals               |
-| `planMeals <days>`  | Generates a random meal plan for days |
+| `add <name>`    | Adds a meal to your list              |
+| `remove <name>` | Removes a meal by name                |
+| `view`         | Lists all current meals               |
+| `plan <days>`  | Generates a random meal plan for days |
 | `help`              | Lists available commands              |
 | `exit`              | Quit the CLI                          |
 
