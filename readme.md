@@ -69,28 +69,18 @@ The CLI supports interactive input. You can type these commands once the program
 Add a meal:
 
 ```sh
-> addMeal Spaghetti
+> add Spaghetti
 Meal added: Spaghetti
 ```
 
 Generate a random 5-day plan:
 
 ```sh
-> planMeals 5
+> plan 5
 Day 1: Tacos
 Day 2: Spaghetti
 ...
 ```
-
-## 📦 Contributing
-
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m "Add feature"`)
-4. Push to your fork (`git push origin feature/your-feature`)
-5. Open a pull request
 
 ## 📄 License
 
